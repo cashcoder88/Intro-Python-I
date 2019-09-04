@@ -22,3 +22,21 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+c = calendar.TextCalendar(calendar.SUNDAY)
+currentMonth = datetime.now().month
+currentYear = datetime.now().year
+print(type(currentYear))
+
+def makeCalendar(*argv):
+  global currentYear, currentMonth
+  if len(argv) == 1:
+    currentMonth = datetime.strptime(argv[0], '%B').month
+  elif len(argv)==2:
+    currentMonth = datetime.strptime(argv[0], '%B').month
+    currentYear = argv[1]
+  c.prmonth(currentYear, currentMonth)
+
+makeCalendar()
+makeCalendar('April')
+makeCalendar('March', 2000)
